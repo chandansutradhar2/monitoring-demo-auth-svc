@@ -1,0 +1,18 @@
+global:
+  scrape_interval: 10s 
+scrape_configs:
+  # Prometheus itself
+  # This uses the static method to get metrics endpoints
+  - job_name: "prometheus"
+    honor_labels: true
+    static_configs:
+      - targets: ["prometheus:9090"]
+  - job_name: "auth-svc"
+    honor_labels: true
+    static_configs:
+      - targets: ["auth-svc:3001"]
+  - job_name: "auth-svc-docker"
+    honor_labels: true
+    static_configs:
+      - targets: ["docker.for.win.localhost:3001"]
+  
